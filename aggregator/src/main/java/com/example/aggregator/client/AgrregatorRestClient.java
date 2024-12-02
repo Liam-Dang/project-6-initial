@@ -36,7 +36,23 @@ public class AgrregatorRestClient {
         Entry[] entryArray = responseEntity.getBody();
 
         return Arrays.stream(entryArray).collect(Collectors.toList());
+    }
 
+    public List<Entry> getWordsThatContain(String chars) {
 
+        String uri = "http://localhost:9091/getWordsThatContain/" + chars;
+        ResponseEntity<Entry[]> responseEntity = restTemplate.getForEntity(uri, Entry[].class);
+        Entry[] entryArray = responseEntity.getBody();
+
+        return Arrays.stream(entryArray).collect(Collectors.toList());
+    }
+
+    public List<Entry> getWordsThatContainConsecutiveLetters() {
+
+        String uri = "http://localhost:9091/getWordsThatContainConsecutiveLetters";
+        ResponseEntity<Entry[]> responseEntity = restTemplate.getForEntity(uri, Entry[].class);
+        Entry[] entryArray = responseEntity.getBody();
+
+        return Arrays.stream(entryArray).collect(Collectors.toList());
     }
 }
